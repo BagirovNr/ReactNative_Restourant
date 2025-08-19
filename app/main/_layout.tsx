@@ -1,7 +1,7 @@
-import { Ionicons } from "@expo/vector-icons"; // иконки
+import { Ionicons } from "@expo/vector-icons"; 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StatusBar } from "react-native";
-import GiveFeedbackScreen from "../main/GiveFeedbackScreen.jsx"; // добавим новый экран
+import GiveFeedbackScreen from "../main/GiveFeedbackScreen.jsx"; 
 import HomeScreen from "../main/home";
 
 const Tab = createBottomTabNavigator();
