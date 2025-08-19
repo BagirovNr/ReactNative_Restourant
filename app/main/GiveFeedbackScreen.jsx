@@ -1,5 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import email from "react-native-email";
 
 export default function GiveFeedbackScreen() {
   const [feedback, setFeedback] = useState("");
@@ -9,7 +10,13 @@ export default function GiveFeedbackScreen() {
       Alert.alert("Error", "Please enter your feedback!");
       return;
     }
-    // Here you can add logic to send feedback to a server
+
+    const to = ["nbagirovdev@gmail.com"]; //feedback will come to my mail
+    email(to, {
+      subject: "App Feedback",
+      body: feedback,
+    }).catch(console.error);
+
     Alert.alert("Thank you!", "Your feedback has been submitted.");
     setFeedback("");
   };
@@ -20,6 +27,7 @@ export default function GiveFeedbackScreen() {
       <Text style={styles.subtitle}>We value your opinion!</Text>
 
       <TextInput
+        
         style={styles.input}
         placeholder="Write your feedback..."
         placeholderTextColor="#aaa"
@@ -36,7 +44,7 @@ export default function GiveFeedbackScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f5f6fa", paddingTop: 130,  },
+  container: { flex: 1, backgroundColor: "#f5f6fa", paddingTop: 130 },
   title: { fontSize: 28, fontWeight: "700", marginBottom: 5, textAlign: "center" },
   subtitle: { fontSize: 16, color: "#7f8c8d", marginBottom: 20, textAlign: "center" },
   input: {
